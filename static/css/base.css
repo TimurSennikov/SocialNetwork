@@ -1,0 +1,32 @@
+*{
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    background: #FAF8FF;
+}
+
+header{
+    width: 100vw;
+    height: 10vh;
+    /* background: blueviolet; */
+}
+
+.containers {
+    display: flex;
+    justify-content: space-between;
+    padding: 0%;
+}
+
+.left-container{
+    height: 80vh;
+    width: 24vw;
+    background: rgb(226, 43, 43);
+}
+
+.content{
+    height: 80vh;
+    width: 76vw;
+    background-color: darkgreen;
+}

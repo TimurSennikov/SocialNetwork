@@ -1,0 +1,37 @@
+<html lang="en">
+    <head>
+        {% load static %}
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block meta %}{% endblock %}
+
+        <title>{% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block links %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+
+        
+        <main class="containers">
+            <div class = "left-container">
+                {% block left_container %}{% endblock %}
+            </div>
+            <div class = "content">
+            {% block content %}{% endblock %}
+            </div>
+        </main>
+
+        
+        <footer>
+            {% block footer %}{% endblock %}
+        </footer>
+
+        
+        {% block scripts %}{% endblock %}
+    </body>
+</html>
