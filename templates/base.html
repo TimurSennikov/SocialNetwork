@@ -13,6 +13,25 @@
     </head>
     <body>
         <header>
+            <img src="{% static 'media/logo.png' %}" class="worldit">
+            <div class="header-links">
+                <div>
+                    <img src="{% static 'media/home.png' %}">
+                    <a href="{% url 'home_view' %}">Головна</a>
+                </div>
+                <div>
+                    <img src="{% static 'media/gallery.png' %}">
+                    <a href="{% url 'post_view' %}">Мої публікації</a>
+                </div>
+                <div>
+                    <img src="{% static 'media/friends.png' %}">
+                    <a href="{% url 'friends_view' %}">Друзі</a>
+                </div>
+                <div>
+                    <img src="{% static 'media/settings.png' %}">
+                    <a href="{% url 'user_view' %}">Налаштування</a>
+                </div>
+            </div>
             {% block header %}{% endblock %}
         </header>
 
