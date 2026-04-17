@@ -1,83 +1,269 @@
-*{
-    justify-content: center;
-    align-items: center;
+/* ── RESET ─────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
+body {
     background: #FAF8FF;
+    font-family: 'Manrope', sans-serif;
 }
 
-.containers {
-    display: flex;
-    justify-content: space-between;
-    padding: 0%;
-}
-
-.left-container {
-    height: 80vh;
-    width: 24vw;
-    background-color: #FAF8FF;
-    
-    border: 1px solid;
-    border-radius: 4%;
-    border-color: #F0F0F0;
-}
-
-.content {
-    height: 80vh;
-    width: 76vw;
-    background-color: #FAF8FF;
-    
-    border: 1px solid;
-    border-radius: 3%;
-    border-color: #F0F0F0;
-}
-
-
-header{
-    width: 100vw;
-    height: 10vh;
+/* ── HEADER ─────────────────────────────────────── */
+header {
+    width: 100%;
+    height: 8vh;           /* пропорційно висоті вікна */
+    min-height: 52px;      /* не менше 52px на малих екранах */
     background-color: #FFFFFF;
-    
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5vw;      /* відступи від країв — % від ширини */
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-header .header-links {
-    width: 50%;
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1.5px;
+    background: repeating-linear-gradient(
+        90deg,
+        #C4AEED 0px, #C4AEED 6px,
+        transparent 6px, transparent 14px
+    );
 }
 
-header .header-links a {
-    padding-left: 5%;
-    padding-right: 5%;
-    
-    text-decoration: none;
-    color: black;
+/* ── LOGO ────────────────────────────────────────── */
+.worldit {
+    height: 3.5vh;         /* логотип пропорційний висоті шапки */
+    min-height: 22px;
+    max-height: 32px;
+    width: auto;
 }
 
-header .header-links div:hover {
-    background-color: rgba(0.5, 0.5, 0.5, 0.1);
-}
-
-header .header-links img {
-    width: 15%;
-    height: auto;
-}
-
+/* ── NAV ─────────────────────────────────────────── */
 header .header-links {
     display: flex;
+    align-items: center;
+    gap: 0.3vw;
+    width: auto;
 }
 
 header .header-links div {
     display: flex;
+    align-items: center;
+    gap: 0.5vw;            /* відстань між іконкою і текстом */
+    padding: 0.8vh 1.1vw;  /* вертикаль — vh, горизонталь — vw */
+    border-radius: 0.6vw;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
 }
 
-header a.active{
-    background-color: gray; 
-    border-radius: 5%;
+header .header-links div:hover {
+    background-color: #F4F4F8;
 }
 
-.worldit{
-    padding-left: 5%;
-    padding-right: 25%;
+header .header-links img {
+    width: 1.2vw;          /* іконка пропорційна ширині екрана */
+    min-width: 14px;
+    max-width: 20px;
+    height: auto;
+    object-fit: contain;
+}
+
+header .header-links a {
+    padding: 0;
+    text-decoration: none;
+    font-size: clamp(11px, 0.85vw, 15px); /* плавний розмір шрифту */
+    font-weight: 600;
+    color: #8A8A9A;
+    transition: color 0.15s;
+}
+
+header .header-links div:hover a {
+    color: #1A1A2E;
+}
+
+/* активна вкладка */
+header .header-links div.active {
+    background-color: #F0EAFA;
+    border-color: #C4AEED;
+}
+
+header .header-links div.active a {
+    color: #7B5EA7;
+}
+
+/* кнопка Вихід */
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    padding: 0.8vh 1.1vw;
+    border-radius: 0.6vw;
+    border: 1.5px solid #E2E2EA;
+    background: white;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(11px, 0.85vw, 15px);
+    font-weight: 600;
+    color: #8A8A9A;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    margin-left: 0.5vw;
+    white-space: nowrap;
+}
+
+.btn-logout:hover {
+    border-color: #C0C0CC;
+    color: #1A1A2E;
+}
+
+.btn-logout img {
+    width: 1.2vw;
+    min-width: 14px;
+    max-width: 18px;
+    height: auto;
+}
+
+/* ── LAYOUT ──────────────────────────────────────── */
+.containers {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh 2.5vw;
+    gap: 1.5vw;
+    align-items: flex-start;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────── */
+.left-container {
+    width: 22vw;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #F0F0F0;
+    border-radius: 1.2vw;
+    padding: 2.5vh 1.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* аватар */
+.left-container .avatar-wrap {
+    position: relative;
+    margin-bottom: 1.5vh;
+}
+
+.left-container .avatar-wrap img {
+    width: 5.5vw;
+    min-width: 60px;
+    max-width: 90px;
+    height: 5.5vw;
+    min-height: 60px;
+    max-height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.online-dot {
+    position: absolute;
+    bottom: 4%; right: 4%;
+    width: 16%;
+    height: 16%;
+    min-width: 10px;
+    min-height: 10px;
+    background: #3DB671;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* ім'я та хендл */
+.sidebar-name {
+    font-size: clamp(13px, 1.1vw, 18px);
+    font-weight: 700;
+    color: #1A1A2E;
+    margin-bottom: 0.4vh;
+    text-align: center;
+}
+
+.sidebar-handle {
+    font-size: clamp(11px, 0.8vw, 14px);
+    font-weight: 500;
+    color: #8A8A9A;
+    margin-bottom: 2vh;
+    text-align: center;
+}
+
+/* статистика */
+.sidebar-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    border-top: 1px solid #F0F0F0;
+    padding-top: 1.8vh;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4vh;
+    padding: 0 0.5vw;
+}
+
+.stat-item + .stat-item {
+    border-left: 1px solid #F0F0F0;
+}
+
+.stat-value {
+    font-size: clamp(13px, 1.1vw, 18px);
+    font-weight: 800;
+    color: #1A1A2E;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: clamp(9px, 0.7vw, 12px);
+    font-weight: 500;
+    color: #8A8A9A;
+}
+
+/* ── CONTENT ─────────────────────────────────────── */
+.content {
+    flex: 1;
+    min-height: 80vh;
+    background-color: #FAF8FF;
+    border: 1px solid #F0F0F0;
+    border-radius: 1vw;
+    padding: 2vh 2vw;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-info * {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.avatar img {
+    max-width: 6.6vw;
+    max-height: auto;
+}
+
+.stats {
+    display: flex;
 }
