@@ -46,18 +46,18 @@ header::after {
 }
 
 /* ── NAV ─────────────────────────────────────────── */
-header .header-links {
+header {
     display: flex;
     align-items: center;
     gap: 0.3vw;
     width: auto;
 }
 
-header .header-links div {
+header nav {
     display: flex;
     align-items: center;
     gap: 0.5vw;            /* відстань між іконкою і текстом */
-    padding: 0.8vh 1.1vw;  /* вертикаль — vh, горизонталь — vw */
+    padding: 0.8vh 60vw;  /* вертикаль — vh, горизонталь — vw */
     border-radius: 0.6vw;
     border: 1.5px solid transparent;
     cursor: pointer;
@@ -65,11 +65,7 @@ header .header-links div {
     white-space: nowrap;
 }
 
-header .header-links div:hover {
-    background-color: #F4F4F8;
-}
-
-header .header-links img {
+header a img {
     width: 1.2vw;          /* іконка пропорційна ширині екрана */
     min-width: 14px;
     max-width: 20px;
@@ -77,7 +73,7 @@ header .header-links img {
     object-fit: contain;
 }
 
-header .header-links a {
+header a {
     padding: 0;
     text-decoration: none;
     font-size: clamp(11px, 0.85vw, 15px); /* плавний розмір шрифту */
@@ -86,7 +82,7 @@ header .header-links a {
     transition: color 0.15s;
 }
 
-header .header-links div:hover a {
+header nav a:hover {
     color: #1A1A2E;
 }
 
