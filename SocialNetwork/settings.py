@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -76,6 +77,24 @@ WSGI_APPLICATION = 'SocialNetwork.wsgi.application'
 ASGI_APPLICATION = 'SocialNetwork.asgi.application'
 
 AUTH_USER_MODEL = 'user_app.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# EMAIL MAINTAIN
+
+DEFAULT_FROM_EMAIL = ""
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!
+# Email settings (move these to your settings.py in production)
+# from django.core.mail.backends.smtp import EmailBackend
+EMAIL_BACKEND = " django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "" # login
+
+EMAIL_HOST_PASSWORD = "" # password
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

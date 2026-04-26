@@ -13,36 +13,61 @@
     </head>
     <body>
         <header>
+            <div class="image-container">
+                    <a href="{% url 'home_view' %}" class="page-link">
+                        <img src="{% static 'media/logo.png' %}" class="main-logo">
+                    </a>
+            </div>
+
             {% if request.path != 'auth/' %}
                 <nav>
-                    <a href="{% url 'home_view' %}" class="logo">
-                        <img src="{% static 'media/home.png' %}">
-                        <span>Головна</span>
-                    </a>
+                    <div>
+                            <a href="{% url 'home_view' %}" class="page-link">
+                                <img src="{% static 'media/home.png' %}">
+                                <span>Головна</span>
+                            </a>
+                    </div>
 
-                    <a href="{% url 'post_view' %}" class="logo">
-                        <img src="{% static 'media/gallery.png' %}">
-                        <span>Мої публікації</span>
-                    </a>
+                    <div>
+                            <a href="{% url 'post_view' %}" class="page-link">
+                                <img src="{% static 'media/gallery.png' %}">
+                                <span>Мої публікації</span>
+                            </a> 
+                    </div>
 
-                    <a href="{% url 'friends_view' %}" class="logo">
-                        <img src="{% static 'media/friends.png' %}">
-                        <span>Друзі</span>
-                    </a>
+                    <div>
+                            <a href="{% url 'friends_view' %}" class="page-link">
+                                <img src="{% static 'media/friends.png' %}">
+                                <span>Друзі</span>
+                            </a>
+                    </div>
 
-                    <a href="">
-                        <img src="{% static 'media/chat.png' %}" alt="">
-                        <span>Чати</span>
-                    </a>
+                    <div>
+                            <a href="/chat" class="page-link">
+                                <img src="{% static 'media/chat.png' %}" alt="">
+                                <span>Чати</span>
+                            </a>
+                    </div>
 
-                    <a href="{% url 'profile' %}" class="logo">
-                        <img src="{% static 'media/settings.png'%}">
-                        <span>Профіль</span>
-                    </a>
+                    <div>
+                            <a href="/settings" class="page-link">
+                                <img src="{% static 'media/settings.png'%}">
+                                <span>Налаштування</span>
+                            </a>
+                    </div>
+
+                    <div class="logout">
+                            <a href="/logout" class="logo logout-button">
+                                <span>
+                                    <img src="{% static 'media/logout.png'%}">
+                                    <span>Вихід</span>
+                                </span>
+                            </a>
+                    </div>
                 </nav>
-                {% endif %}
+            {% endif %}
 
-                {% block header %}{% endblock %}
+            {% block header %}{% endblock %}
             </header>
 
         
@@ -55,22 +80,26 @@
                         <div class="avatar">
                              <img src="{% static 'media/avatar_example.png' %}" alt="Аватар">
                         </div>
-                        <div class="username">
-                            <p class="bold">Lina Li</p>
-                            <p class="bold">@thelili</p>
-                        </div>
-                        <div class="stats">
-                            <div class='stat-item'>
-                                <p class="bold">566</p>
-                                <p>Дописи</p>
+
+                        <div class="profile-head">
+                            <div class="username">
+                                <p class="bold">Lina Li</p>
+                                <p class="bold">@thelili</p>
                             </div>
-                            <div class='stat-item'>
-                                <p class="bold">12.1К</p>
-                                <p>Читачі</p>
-                            </div>
-                            <div class='stat-item'>
-                                <p class="bold">222</p>
-                                <p>Друзі</p>
+
+                            <div class="stats">
+                                <div class='stat-item'>
+                                    <p class="bold">566</p>
+                                    <p>Дописи</p>
+                                </div>
+                                <div class='stat-item'>
+                                    <p class="bold">12.1К</p>
+                                    <p>Читачі</p>
+                                </div>
+                                <div class='stat-item'>
+                                    <p class="bold">222</p>
+                                    <p>Друзі</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,7 +115,8 @@
             {% block footer %}{% endblock %}
         </footer>
 
-        
+        <script src="{% static 'js/base.js' %}"></script>
+
         {% block scripts %}{% endblock %}
     </body>
 </html>

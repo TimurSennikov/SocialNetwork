@@ -1,0 +1,17 @@
+.section-register, .section-login {
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.section-register{
+    display: none;
+}
+
+.section-confirm {
+    display: none;
+}
+
+.section-login{
+    display: flex;
+}

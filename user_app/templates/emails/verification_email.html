@@ -1,0 +1,25 @@
+<h2>Доброго дня</h2>
+<h3>Підтвердіть реєстрацію</h3>
+<h4>Ваш код {{code}}</h4>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        h2 { color: #333; }
+        .code { font-size: 32px; font-weight: bold; color: #4CAF50; letter-spacing: 5px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Доброго дня</h2>
+        <h3>Підтвердіть реєстрацію</h3>
+        <p>Ваш код:</p>
+        <div class="code">{{ code }}</div>
+        <p>Якщо ви не запитували цей код, проігноруйте цей лист.</p>
+    </div>
+</body>
+</html>

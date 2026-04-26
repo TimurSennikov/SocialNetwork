@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORLD IT – Реєстрація</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-page">
+
+    <div class="auth-card">
+
+        <!-- LOGO -->
+        <a href="#" class="auth-logo">
+            <svg class="auth-logo-icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="2"    x2="12" y2="22"/>
+                <line x1="2"  y1="12"   x2="22" y2="12"/>
+                <line x1="4.93" y1="4.93"   x2="19.07" y2="19.07"/>
+                <line x1="19.07" y1="4.93"  x2="4.93"  y2="19.07"/>
+            </svg>
+            WORLD IT
+        </a>
+
+        <!-- ── ЛІВА: ФОРМА ─────────────────────── -->
+        <div class="auth-form-side">
+
+            <!-- ТАБИ -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tab-register"
+                        onclick="switchTab('register')">
+                    Реєстрація
+                </button>
+                <button class="auth-tab" id="tab-login"
+                        onclick="switchTab('login')">
+                    Авторизація
+                </button>
+            </div>
+
+            <!-- ЗАГОЛОВОК -->
+            <p class="auth-title" id="auth-title">Приєднуйся до World IT</p>
+
+            <!-- ФОРМА РЕЄСТРАЦІЇ -->
+            <div id="form-register">
+
+                <div class="auth-field">
+                    <label class="auth-label">Електронна пошта</label>
+                    <div class="auth-input-wrap">
+                        <input class="auth-input"
+                               type="email"
+                               placeholder="you@example.com"
+                               id="reg-email">
+                    </div>
+                    <span class="auth-error" id="err-reg-email"></span>
+                </div>
+
+                <div class="auth-field">
+                    <label class="auth-label">Пароль</label>
+                    <div class="auth-input-wrap">
+                        <input class="auth-input"
+                               type="password"
+                               placeholder="Введи пароль"
+                               id="reg-pass">
+                        <button class="auth-eye"
+                                onclick="togglePass('reg-pass', this)"
+                                type="button">
+                            <svg class="auth-eye-icon" id="eye-reg-pass"
+                                 viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="auth-error" id="err-reg-pass"></span>
+                </div>
+
+                <div class="auth-field">
+                    <label class="auth-label">Підтверди пароль</label>
+                    <div class="auth-input-wrap">
+                        <input class="auth-input"
+                               type="password"
+                               placeholder="Повтори пароль"
+                               id="reg-pass2">
+                        <button class="auth-eye"
+                                onclick="togglePass('reg-pass2', this)"
+                                type="button">
+                            <svg class="auth-eye-icon"
+                                 viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="auth-error" id="err-reg-pass2"></span>
+                </div>
+
+                <button class="auth-submit" onclick="submitRegister()">
+                    Створити акаунт
+                </button>
+
+                <p class="auth-footer-text">
+                    Вже маєш акаунт?
+                    <span class="auth-footer-link"
+                          onclick="switchTab('login')">Увійти</span>
+                </p>
+
+            </div>
+
+            <!-- ФОРМА АВТОРИЗАЦІЇ (схована) -->
+            <div id="form-login" style="display:none">
+
+                <div class="auth-field">
+                    <label class="auth-label">Електронна пошта</label>
+                    <div class="auth-input-wrap">
+                        <input class="auth-input"
+                               type="email"
+                               placeholder="you@example.com"
+                               id="login-email">
+                    </div>
+                    <span class="auth-error" id="err-login-email"></span>
+                </div>
+
+                <div class="auth-field">
+                    <label class="auth-label">Пароль</label>
+                    <div class="auth-input-wrap">
+                        <input class="auth-input"
+                               type="password"
+                               placeholder="Введи пароль"
+                               id="login-pass">
+                        <button class="auth-eye"
+                                onclick="togglePass('login-pass', this)"
+                                type="button">
+                            <svg class="auth-eye-icon"
+                                 viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="auth-error" id="err-login-pass"></span>
+                </div>
+
+                <button class="auth-submit" onclick="submitLogin()">
+                    Увійти
+                </button>
+
+                <p class="auth-footer-text">
+                    Ще не зареєстрований?
+                    <span class="auth-footer-link"
+                          onclick="switchTab('register')">Створити акаунт</span>
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ── ПРАВА: МОКАП ────────────────────── -->
+        <div class="auth-mockup-side">
+            <!-- Замінити на реальне зображення: -->
+            <!-- <img class="auth-mockup-img" src="mockup.png" alt=""> -->
+
+            <!-- SVG-заглушка мокапу -->
+            <div class="auth-mockup-placeholder">
+                <svg viewBox="0 0 400 320" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ноутбук -->
+                    <rect x="60" y="40" width="280" height="180"
+                          rx="12" fill="#2C2C3E" stroke="#444" stroke-width="1"/>
+                    <rect x="70" y="50" width="260" height="160"
+                          rx="6" fill="#FAF8FF"/>
+                    <!-- Екран: шапка -->
+                    <rect x="70" y="50" width="260" height="18"
+                          rx="0" fill="#FFFFFF"/>
+                    <rect x="78" y="56" width="40" height="6"
+                          rx="2" fill="#C4AEED"/>
+                    <rect x="128" y="56" width="30" height="6"
+                          rx="2" fill="#EEE"/>
+                    <rect x="165" y="56" width="25" height="6"
+                          rx="2" fill="#EEE"/>
+                    <!-- Сайдбар -->
+                    <rect x="70" y="68" width="60" height="142"
+                          rx="0" fill="#FFFFFF"/>
+                    <circle cx="100" cy="88" r="14" fill="#D4B5E8"/>
+                    <rect x="83" y="108" width="34" height="5"
+                          rx="2" fill="#DDD"/>
+                    <rect x="88" y="116" width="24" height="4"
+                          rx="2" fill="#EEE"/>
+                    <rect x="75" y="132" width="50" height="1"
+                          fill="#F0F0F0"/>
+                    <rect x="78" y="138" width="14" height="10"
+                          rx="1" fill="#F4F4F8"/>
+                    <rect x="96" y="138" width="14" height="10"
+                          rx="1" fill="#F4F4F8"/>
+                    <rect x="114" y="138" width="14" height="10"
+                          rx="1" fill="#F4F4F8"/>
+                    <!-- Пост -->
+                    <rect x="136" y="68" width="194" height="142"
+                          rx="0" fill="#FAF8FF"/>
+                    <rect x="140" y="72" width="186" height="30"
+                          rx="4" fill="#FFFFFF"/>
+                    <rect x="140" y="108" width="186" height="98"
+                          rx="4" fill="#FFFFFF"/>
+                    <circle cx="152" cy="118" r="8" fill="#D4B5E8"/>
+                    <rect x="165" y="115" width="40" height="5"
+                          rx="2" fill="#DDD"/>
+                    <rect x="144" y="130" width="120" height="4"
+                          rx="2" fill="#EEE"/>
+                    <rect x="144" y="137" width="100" height="4"
+                          rx="2" fill="#EEE"/>
+                    <!-- Фото сітка 2x2 -->
+                    <rect x="144" y="148" width="82" height="46"
+                          rx="2" fill="#C9A7E8" opacity="0.5"/>
+                    <rect x="230" y="148" width="82" height="46"
+                          rx="2" fill="#F7C75A" opacity="0.5"/>
+                    <!-- Підставка ноутбука -->
+                    <rect x="160" y="220" width="80" height="8"
+                          rx="2" fill="#2C2C3E"/>
+                    <rect x="130" y="228" width="140" height="5"
+                          rx="2" fill="#3A3A50"/>
+
+                    <!-- Телефон -->
+                    <rect x="190" y="140" width="110" height="175"
+                          rx="16" fill="#1C1C28" stroke="#333"
+                          stroke-width="1"/>
+                    <rect x="196" y="152" width="98" height="155"
+                          rx="8" fill="#FAF8FF"/>
+                    <!-- Екран телефону: шапка -->
+                    <rect x="196" y="152" width="98" height="14"
+                          rx="0" fill="#FFFFFF"/>
+                    <rect x="200" y="156" width="30" height="5"
+                          rx="2" fill="#C4AEED"/>
+                    <!-- Пост телефону -->
+                    <circle cx="210" cy="177" r="8" fill="#D4B5E8"/>
+                    <rect x="222" y="174" width="30" height="4"
+                          rx="2" fill="#DDD"/>
+                    <rect x="200" y="188" width="82" height="4"
+                          rx="2" fill="#EEE"/>
+                    <rect x="200" y="194" width="70" height="4"
+                          rx="2" fill="#EEE"/>
+                    <!-- Фото сітка телефону 2x3 -->
+                    <rect x="200" y="204" width="38" height="28"
+                          rx="2" fill="#C9A7E8" opacity="0.5"/>
+                    <rect x="242" y="204" width="38" height="28"
+                          rx="2" fill="#F7C75A" opacity="0.5"/>
+                    <rect x="200" y="235" width="38" height="28"
+                          rx="2" fill="#87CEEB" opacity="0.5"/>
+                    <rect x="242" y="235" width="38" height="28"
+                          rx="2" fill="#C4A35A" opacity="0.5"/>
+                    <!-- Notch -->
+                    <rect x="228" y="143" width="34" height="7"
+                          rx="4" fill="#111"/>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* ── ПЕРЕМИКАННЯ ТАБІВ ─────────────────────── */
+        function switchTab(tab) {
+            const titles = {
+                register: 'Приєднуйся до World IT',
+                login:    'Ласкаво просимо'
+            };
+            document.getElementById('auth-title').textContent = titles[tab];
+
+            document.getElementById('form-register').style.display =
+                tab === 'register' ? '' : 'none';
+            document.getElementById('form-login').style.display =
+                tab === 'login' ? '' : 'none';
+
+            document.getElementById('tab-register').classList
+                .toggle('active', tab === 'register');
+            document.getElementById('tab-login').classList
+                .toggle('active', tab === 'login');
+        }
+
+        /* ── ПОКАЗАТИ / СХОВАТИ ПАРОЛЬ ─────────────── */
+        function togglePass(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const isText = input.type === 'text';
+            input.type = isText ? 'password' : 'text';
+
+            /* міняємо іконку */
+            btn.querySelector('svg').innerHTML = isText
+                ? `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                   <circle cx="12" cy="12" r="3"/>`
+                : `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20
+                            c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                   <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4
+                            c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                   <line x1="1" y1="1" x2="23" y2="23"/>`;
+        }
+
+        /* ── ВАЛІДАЦІЯ РЕЄСТРАЦІЇ ──────────────────── */
+        function submitRegister() {
+            let valid = true;
+
+            const email = document.getElementById('reg-email');
+            const pass  = document.getElementById('reg-pass');
+            const pass2 = document.getElementById('reg-pass2');
+
+            clearErrors();
+
+            if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                showError('err-reg-email', 'Введіть коректну електронну пошту');
+                valid = false;
+            }
+            if (!pass.value || pass.value.length < 6) {
+                showError('err-reg-pass', 'Пароль має містити щонайменше 6 символів');
+                valid = false;
+            }
+            if (pass.value !== pass2.value) {
+                showError('err-reg-pass2', 'Паролі не збігаються');
+                valid = false;
+            }
+
+            if (valid) {
+                /* тут відправка форми / fetch до Django */
+                alert('Акаунт створено! ✓');
+            }
+        }
+
+        /* ── ВАЛІДАЦІЯ ВХОДУ ───────────────────────── */
+        function submitLogin() {
+            let valid = true;
+            clearErrors();
+
+            const email = document.getElementById('login-email');
+            const pass  = document.getElementById('login-pass');
+
+            if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                showError('err-login-email', 'Введіть коректну електронну пошту');
+                valid = false;
+            }
+            if (!pass.value) {
+                showError('err-login-pass', 'Введіть пароль');
+                valid = false;
+            }
+
+            if (valid) {
+                alert('Вхід успішний! ✓');
+            }
+        }
+
+        function showError(id, msg) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = msg;
+        }
+
+        function clearErrors() {
+            ['err-reg-email','err-reg-pass','err-reg-pass2',
+             'err-login-email','err-login-pass'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = '';
+            });
+        }
+
+        /* ═══════════════════════════════════════════
+           СКРИПТ ДЛЯ БАЗОВОГО ШАБЛОНУ:
+           — видаляє <nav> з <header>
+           — видаляє <div class="info-profile"> з <main>
+        ═══════════════════════════════════════════ */
+        document.addEventListener('DOMContentLoaded', function () {
+
+            /* 1. Видалити nav з header */
+            const headerNav = document.querySelector('header nav');
+            if (headerNav) headerNav.remove();
+
+            /* 2. Видалити div.info-profile з main */
+            const infoProfile = document.querySelector('main .info-profile');
+            if (infoProfile) infoProfile.remove();
+
+        });
+    </script>
+
+</body>
+</html>
