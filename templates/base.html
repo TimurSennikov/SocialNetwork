@@ -13,107 +13,66 @@
     </head>
     <body>
         <header>
-            <div class="image-container">
-                    <a href="{% url 'home_view' %}" class="page-link">
+                <nav>
+                    <a href="{% url 'home_view' %}" class="logo">
                         <img src="{% static 'media/logo.png' %}" class="main-logo">
                     </a>
-            </div>
-
-            {% if request.path != 'auth/' %}
-                <nav>
-                    <div>
+                    {% if request.path != 'auth/' %}
+                        <div>
                             <a href="{% url 'home_view' %}" class="page-link">
                                 <img src="{% static 'media/home.png' %}">
                                 <span>Головна</span>
                             </a>
-                    </div>
-
-                    <div>
+                            
                             <a href="{% url 'post_view' %}" class="page-link">
                                 <img src="{% static 'media/gallery.png' %}">
                                 <span>Мої публікації</span>
                             </a> 
-                    </div>
+                        
 
-                    <div>
+                        
                             <a href="{% url 'friends_view' %}" class="page-link">
                                 <img src="{% static 'media/friends.png' %}">
                                 <span>Друзі</span>
                             </a>
-                    </div>
 
-                    <div>
+                
                             <a href="/chat" class="page-link">
                                 <img src="{% static 'media/chat.png' %}" alt="">
                                 <span>Чати</span>
                             </a>
-                    </div>
-
-                    <div>
                             <a href="/settings" class="page-link">
                                 <img src="{% static 'media/settings.png'%}">
                                 <span>Налаштування</span>
                             </a>
-                    </div>
-
-                    <div class="logout">
-                            <a href="/logout" class="logo logout-button">
-                                <span>
-                                    <img src="{% static 'media/logout.png'%}">
-                                    <span>Вихід</span>
-                                </span>
+                           
+                            <a href="/logout" class="logout">
+                                
+                                <img src="{% static 'icons/logout.png'%}">
+                                
                             </a>
-                    </div>
+                            
+                        </div>
+                    {% endif %}
                 </nav>
-            {% endif %}
+           
 
             {% block header %}{% endblock %}
-            </header>
+        </header>
 
         
-        <main class="containers">        
-            {% block main %}{% endblock %}
+        <main>  
+            <div class="info-profile">
+                {% block info-profile %}
 
-            <div class = "info-profile">
-                {% block left_container %}
-                    <div class="profile-info">
-                        <div class="avatar">
-                             <img src="{% static 'media/avatar_example.png' %}" alt="Аватар">
-                        </div>
-
-                        <div class="profile-head">
-                            <div class="username">
-                                <p class="bold">Lina Li</p>
-                                <p class="bold">@thelili</p>
-                            </div>
-
-                            <div class="stats">
-                                <div class='stat-item'>
-                                    <p class="bold">566</p>
-                                    <p>Дописи</p>
-                                </div>
-                                <div class='stat-item'>
-                                    <p class="bold">12.1К</p>
-                                    <p>Читачі</p>
-                                </div>
-                                <div class='stat-item'>
-                                    <p class="bold">222</p>
-                                    <p>Друзі</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 {% endblock %}
-            </div>
+            </div> 
             <div class="content">
-                {% block content %}{% endblock %}
-            </div>
-        </main>
-
-        
-        <footer>
-            {% block footer %}{% endblock %}
-        </footer>
+                {% block content %}
+                    
+                {% endblock %}
+            </div>     
+         </main>
 
         <script src="{% static 'js/base.js' %}"></script>
 

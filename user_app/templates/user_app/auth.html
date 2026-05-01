@@ -16,12 +16,18 @@
 {% endblock %}
 
 {% block content %}
+    <div class="registration">
+        <div class="register-content">
+            <div class="register-forms">
+                {% include 'user_app/particles/form_login.html' %}
+                {% include 'user_app/particles/form_register.html' %}
+                {% include 'user_app/particles/form_confirm_email.html' %}
+            </div>
 
-    <div>
-        {% include 'user_app/particles/form_login.html' %}
-        {% include 'user_app/particles/form_register.html' %}
-        {% include 'user_app/particles/form_confirm_email.html' %}
-        <img src="" alt="">
+            <div class="imgcont">
+                <img src="{% static 'icons/laptop.png' %}" alt="">
+            </div>
+        </div>
     </div>
 {% endblock %}
 

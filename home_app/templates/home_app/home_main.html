@@ -1,11 +1,22 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
+
+{% load static %}
 
 {% block title %}home{% endblock title %} 
 
-{% block links %}{% endblock links %} 
+{% block links %}
+    <link rel="stylesheet" href="{% static 'home_app/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'home_app/css/request.css' %}">
+{% endblock links %} 
+
+{% block info-profile %}
+    {% include 'home_app/particle/info_profile.html' %}
+    {% include 'home_app/particle/request.html' %}
+    {% include 'home_app/particle/request.html' %}
+{% endblock %}
 
 {% block content %}
-    <h1>домашняя</h1>
+
 {% endblock content %} 
 
-<!-- {% block scripts %} {% endblock scripts %} -->
+{% block scripts %} {% endblock scripts %}

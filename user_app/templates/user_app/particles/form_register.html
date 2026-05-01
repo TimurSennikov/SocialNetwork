@@ -1,10 +1,15 @@
-<div class="section-register">
+<div class="selection section-register">
     <nav>
         <p id="">Реєстрація</p>
         <p id="login">Авторизація</p>
     </nav>
-    <p>Приєднуйся до World IT</p>
-    <form action="{% url 'auth' %}" method="post">
+
+    <span class="misc">
+        <p>Приєднуйся до World IT</p>
+    </span>
+
+    <form id="register_form" action="{% url 'register' %}" method="post">
+        {% csrf_token %}
 
         {{ form_register.as_p }}
         <button type="submit">Створити акаунт</button>

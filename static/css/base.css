@@ -5,186 +5,96 @@
 
 * {
     font-family: "GT Walseim Pro";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #070A1C;
 }
 
 header {
     display: flex;
     flex-direction: row;
     
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
-    height: 9vh;
-    width: 100%;
+    width: 100vw;
+    height: 9.17vh;
+
+    padding: 2.5vh 5.5vw 2.5vh 5.5vw;
     
     background-color: #FFFFFF;
 }
-
-header .image-container img {
-    width: 10.0694vw;
-}
-
-header .image-container {
-    display: flex;
-    
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    
-    padding-left: 5%;
-
-    width: 94vw;
-}
-
 header nav {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     
-    width: 60vw;
+    width: 90vw;
 }
-
-header nav div {
+.logo{
+    width: 9.86vw;
+    height: 1.875vh;
+}
+.logo img{
+    height: 100%;
+}
+header nav div{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     
-    width: 53vw;
-    height: 4vh;
-
-    gap: 2vw;
+    width: 56vw;
+    height: 4.17vh;
+    gap: 1.7vw;
 }
-
-header nav div a {
+.page-link{
     display: flex;
-    flex-direction: row;
-    
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    
-    width: fit-content;
-    height: 3vh;
-    gap: 0.6vw;
-    
-    text-decoration: none;
-    color: black;
+    height: 2.92vh;
+    padding: 0.42vh 0.55vw 0.42vh 0.55vw;
+    gap: 0.55vw;
+    border-radius: 3px;
+}
+.page-link img{
+    height: 100%;
+}
+.logout{
+    width: 6.60vw;
+    height: 4,18vh;
+}
+.logout img{
+    height: 100%;
 }
 
-header nav div a span {
-    font-size: 2vh;
-}
-
-header nav a img {
-    width: 20px;
-    height: auto;
-}
-
-header nav .logout-button span {
+main{
     display: flex;
-    flex-direction: row;
-    gap: 0.5vw;
-}
-
-header nav .logout-button {
-    display: flex;
-    flex-direction: row;
-    
     justify-content: center;
-    align-items: center;
-
-    border: 1px solid;
-    border-radius: 1000px;
-    
-    width: 4.947vw;
-    height: 5vh;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    
-    justify-content: center;
-    align-items: flex-start;
-    
-    gap: 2vh;
-    
+    align-items: start;
     background-color: #FAF8FF;
+    padding: 2.2vh 5.5vw 2.2vh 5.5vw;
+
 }
-
-/* панелька */
-
-.profile-info {
+.info-profile{
     display: flex;
     flex-direction: column;
-    
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-
-    width: 18.229vw;
-    height: 44vh;
-    background-color: #FFFFFF;
     
-    border: 1px solid;
-    border-radius: 1vh;
+    width: 24.4vw;
+    /* height: 100vh; */
 
-    border-color: rgba(0.0, 0.0, 0.0, 0.5);
-    
-    margin-left: 25%;
+    gap: 0.83vh;
 }
-
-.profile-info .avatar img {
-    width: 96px;
-    height: 96px;
-}
-
-.profile-info .profile-head {
+.content{
     display: flex;
     flex-direction: column;
-
-    justify-content: center;
-    align-self: center;
-}
-
-.profile-info .username {
-    display: flex;
-    flex-direction: column;
-    
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-info .username p {
-    color: rgba(7, 10, 28, 1);
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.profile-info .stats {
-    display: flex;
-    flex-direction: row;
-    
-    gap: 2vw;
-}
-
-.profile-info .stats {
-    display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 
-    padding-bottom: 5%;
-}
-
-.profile-info .stats * {
-    padding-right: 2%;
-    border-right: 0.1px solid #CDCED2;
-    border-bottom-color: 
-}
-
-.profile-info .stats:last-child {
-    border-right: none;
-    padding-right: none;
+    width: 64.09vw;
+    /* height: 100vh; */
 }

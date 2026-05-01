@@ -1,9 +1,9 @@
 function setupButtons() {
-    let register = document.querySelectorAll(".register");
-    let login = document.querySelectorAll(".login");
+    let register = document.querySelectorAll("#register");
+    let login = document.querySelectorAll("#login");
 
     let register_form = document.querySelector(".section-register");
-    let login_form = document.querySelector(".section-register");
+    let login_form = document.querySelector(".section-login");
 
     for(let reg of register) {
         reg.addEventListener("click", () => {

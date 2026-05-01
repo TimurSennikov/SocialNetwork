@@ -1,10 +1,15 @@
-<div class="section-login">
+<div class="selection section-login">
     <nav>
         <p id="register">Реєстрація</p>
         <p id="">Авторизація</p>
     </nav>
-    <p>Раді тебе знову бачити!</p>
-    <form action="{% url 'auth' %}" method="post">
+
+    <span class="misc">
+        <p>Раді тебе знову бачити!</p>
+    </span>
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
 
         {{ form_login.as_p }}
         <button type="submit">Увійти</button>

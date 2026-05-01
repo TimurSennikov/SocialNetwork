@@ -76,14 +76,15 @@ class EmailAuthenticatedForm(AuthenticationForm):
         'invalid_login': 'Невірний логін або пароль',
         'inactive': 'Цей акаунт неактивний'
     }
-    # 
+
     def clean(self):
         email = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
+
         if email and password:
             self.user_cache = authenticate(
                 request= self.request,
-                username= email,
+                email= email,
                 password= password
             )
             if self.user_cache is None:
@@ -136,9 +137,53 @@ class EmailVerificationForm(forms.Form):
     }))
 
     def get_full_code(self):
-        """Combine 6 digits into one code string."""
         digits = [self.cleaned_data.get(f'digit_{i}', '') for i in range(1, 7)]
         return ''.join(digits)
+
+  
+class EmailAuthenticatedForm(AuthenticationForm):
+    username = forms.EmailField(
+        label= 'Електронна пошта',
+        widget= forms.EmailInput(attrs= {
+            'placeholder': 'you@example.com',
+            "autofocus": True,
+            "autocomplete": "email",
+            'class': 'input-field'
+        })
+    )
+    password = forms.CharField(
+        label= 'Пароль',
+        widget= forms.PasswordInput(attrs= {
+            'placeholder': 'Введи пароль',
+            "autocomplete": "current-password",
+            'class': 'input-field'
+        })
+    )
+    error_messages = {
+        'invalid_login': 'Невірний логін або пароль',
+        'inactive': 'Цей акаунт неактивний'
+    }
+    
+    def clean(self):
+        email = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        if email and password:
+            self.user_cache = authenticate(
+                request= self.request,
+                username= email,
+                password= password
+            )
+            if self.user_cache is None:
+                raise forms.ValidationError(
+                    self.error_messages['invalid_login'],
+                    code= 'invalid_login'
+                )
+            else:
+                self.confirm_login_allowed(self.user_cache)
+                
+        return self.cleaned_data
+    
+    
     
     
     

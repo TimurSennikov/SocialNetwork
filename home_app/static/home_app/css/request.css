@@ -1,0 +1,18 @@
+
+.request{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 24.4vw;
+    height: 25.9vh;
+
+    padding: 8.695vh 1.11vw 8.695vh 1.11vw;
+    gap: 2.7vh;
+
+    border: 1px solid #CDCED2;
+    border-radius: 10px;
+
+    background-color: #FFFFFF;
+}
