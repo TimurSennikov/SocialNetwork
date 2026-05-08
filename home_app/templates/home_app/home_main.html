@@ -4,19 +4,8 @@
 
 {% block title %}home{% endblock title %} 
 
-{% block links %}
-    <link rel="stylesheet" href="{% static 'home_app/css/profile.css' %}">
-    <link rel="stylesheet" href="{% static 'home_app/css/request.css' %}">
-{% endblock links %} 
-
-{% block info-profile %}
-    {% include 'home_app/particle/info_profile.html' %}
-    {% include 'home_app/particle/request.html' %}
-    {% include 'home_app/particle/request.html' %}
-{% endblock %}
-
 {% block content %}
-
+    {% include "post_app/particles/post_popup.html" %}
 {% endblock content %} 
 
 {% block scripts %} {% endblock scripts %}

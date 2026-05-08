@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.contrib import messages
 from .models import User
 
 user = get_user_model()
@@ -184,7 +186,10 @@ class EmailAuthenticatedForm(AuthenticationForm):
         return self.cleaned_data
     
     
-    
+    class Logout(LoginView):
+        def post(self, request, *args, **kwargs):
+            messages.success(request, "Ви вийшли з акаунту")
+            return super().post(request, *args, **kwargs)
     
     
     

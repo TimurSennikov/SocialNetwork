@@ -9,6 +9,8 @@
         <title>{% block title %}{% endblock %}</title>
 
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'home_app/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'home_app/css/request.css' %}">
         {% block links %}{% endblock %}
     </head>
     <body>
@@ -24,7 +26,7 @@
                                 <span>Головна</span>
                             </a>
                             
-                            <a href="{% url 'post_view' %}" class="page-link">
+                            <a href="{% url 'my_posts' %}" class="page-link">
                                 <img src="{% static 'media/gallery.png' %}">
                                 <span>Мої публікації</span>
                             </a> 
@@ -64,7 +66,9 @@
         <main>  
             <div class="info-profile">
                 {% block info-profile %}
-
+                    {% include 'home_app/particle/info_profile.html' %}
+                    {% include 'home_app/particle/request.html' %}
+                    {% include 'home_app/particle/request.html' %}
                 {% endblock %}
             </div> 
             <div class="content">

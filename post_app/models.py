@@ -47,8 +47,8 @@ class PostLike(models.Model):
     """
 
     """
-    user = models.ForeignKey(User)
-    post = models.ForeignKey(Post)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     
 
 class PostHeart(models.Model):
@@ -56,20 +56,20 @@ class PostHeart(models.Model):
 
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     
 class PostLink(models.Model):
     """
     
     """
     url = models.TextField()
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
 class PostView(models.Model):
     """
     
     """
 
-    user = models.ForeignKey(User)
-    post = models.ForeignKey(Post)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 

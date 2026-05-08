@@ -1,5 +1,7 @@
 {% extends "base.html" %} 
 
+{% load static %}
+
 {% block meta %}
     <meta>
 {% endblock %}
@@ -8,16 +10,6 @@
     My posts
 {% endblock %}
 
-{% block links %}
-    <link rel="stylesheet" href="">
-{% endblock %}
-
-{% block info-profile %}
-    
-{% endblock %}
-
 {% block content %}
-    <h1>посты</h1>
+    {% include "post_app/particles/post_popup.html" %}
 {% endblock content %} 
-
-<!-- {% block scripts %} {% endblock scripts %} -->

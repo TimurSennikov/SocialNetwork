@@ -1,0 +1,159 @@
+.post-form {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    width: 64.09vw;
+    height: 12.5vh;
+
+    background-color: #FFFFFF;
+    
+    gap: 0.69vw;
+
+    border: 1px solid #CDCED2;
+    border-radius: 10px;
+
+    padding: 1.1vw;
+}
+
+.post-form form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    flex-direction: column;
+}
+
+.post-form form input {
+    width: 61.875vw;
+    height: 2.29vh;
+
+    border: 0px solid;
+
+    color: #543C52;
+}
+
+.post-form form .misc {
+    display: flex;
+
+    flex-direction: row;
+    justify-content: center;
+
+    width: 17.3vw;
+    height: 10vh;
+}
+
+.post-form form .misc button {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: #543C52;
+    color: #FFFFFF;
+
+    border: 1px solid;
+    border-radius: 1234px;
+
+    width: 13.19vw;
+    height: 5vh;
+}
+
+.post-popup .publication form p {
+    gap: 0.41vw;
+}
+
+.post-popup .publication form label {
+    font-weight: 400;
+    font-size: 16px;
+
+    letter-spacing: -0.7%;
+}
+
+.post-popup .publication form input {
+    width: 23.8vw;
+    height: 4.375vh;
+
+    border: 1px solid #543C52;
+    border-radius: 10px;
+
+    color: #FFFFFF;
+
+    padding: 0.7vw 1.6vh 0.7vw 1.6vh;
+    gap: 0.7vw;
+}
+
+.post-popup .publication form textarea {
+    width: 47.5vw;
+    height: 13.125vh;
+
+    border: 1px solid #CDCED2;
+    border-radius: 10px;
+
+    padding: 1.11vw;
+    gap: 0.7vw;
+}
+
+.post-popup .publication {
+    width: 47.56vw;
+    height: 81.56vh;
+}
+
+.post-popup {
+    position: absolute;
+
+    display: none;
+    
+    flex-direction: column;
+
+    align-items: flex-start;
+    align-self: center;
+
+    width: 53.6vw;
+    height: 69.58vh;
+
+    display: none;
+
+    background-color: #FFFFFF;
+
+    border: 1px solid;
+    border-radius: 20px;
+
+    padding: 2.5vh 3.05vw 4.583vh 3.05vw;
+}
+
+.post-popup form {
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 1.11vw;
+
+    flex-flow: vertical;
+
+    padding: 2.5vh 0 2.5vh 0;
+}
+
+.post-popup form input {
+    width: 23.8vw;
+    height: 4.375vh;
+}
+
+.post-popup form p {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.post-popup form p label {
+    font-size: 14px;
+}

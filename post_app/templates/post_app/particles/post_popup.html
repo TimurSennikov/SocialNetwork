@@ -1,0 +1,28 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/posts.css' %}">
+
+<div class="post-popup">
+    <button id="post_popup_close"></button>
+
+    <div class="publication">
+        <h1>Створення публікації</h1>
+        <form action="">
+            {{ post_form.as_p }}
+        </form>
+    </div>
+</div>
+
+<div class="post-form">
+    <form id="post_mini_form">
+        <input id="post_pre_input" type="text" placeholder="Текст публікації">
+
+        <div class="misc">
+            <button id="post_create_button" type="submit">Перейти до оформлення</button>
+        </div>
+    </form>
+</div>
+
+{% block scripts %}
+    <script src="{% static 'js/post_popup.js' %}"></script>
+{% endblock %}

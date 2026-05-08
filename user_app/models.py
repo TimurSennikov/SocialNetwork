@@ -31,7 +31,6 @@ class Profile(models.Model):
     signature = models.ImageField(blank=True, null=True)
     avatar = models.ImageField()
     pseudonym = models.CharField(max_length= 50)
-    friends = models.ManyToManyField(Profile)
     is_image_signature = models.BooleanField()
     is_text_signature = models.BooleanField()
 
