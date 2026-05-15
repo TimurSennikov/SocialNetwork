@@ -1,28 +1,17 @@
-{% load static %}
-
-<link rel="stylesheet" href="{% static 'css/posts.css' %}">
-
-<div class="post-popup">
-    <button id="post_popup_close"></button>
-
-    <div class="publication">
-        <h1>Створення публікації</h1>
-        <form action="">
-            {{ post_form.as_p }}
+<div class="modal-create-post">
+    <div class="modal-inner">
+        <span class="close-modal">x</span>
+        <div id="create-errors"></div>
+        <form method="post" action="{% url 'post_create' %}" id="post-create-form" method="post" enctype="multipart/form-data">
+            {{ post_creation_form.as_p }}
+            <p>Посилання</p>
+            <div id="links-list">
+                <input type="url" name="links" placeholder="https://www.instagram.com/world.it.academy">
+                <span id="add-link">+</span>
+            </div>
+            <p>
+                <button type="submit">Публікація</button>
+            </p>
         </form>
     </div>
 </div>
-
-<div class="post-form">
-    <form id="post_mini_form">
-        <input id="post_pre_input" type="text" placeholder="Текст публікації">
-
-        <div class="misc">
-            <button id="post_create_button" type="submit">Перейти до оформлення</button>
-        </div>
-    </form>
-</div>
-
-{% block scripts %}
-    <script src="{% static 'js/post_popup.js' %}"></script>
-{% endblock %}

@@ -1,15 +1,24 @@
-{% extends "base.html" %} 
-
+{% extends "base.html" %}
 {% load static %}
 
 {% block meta %}
-    <meta>
+    <meta name="csrf-token" content="{{ csrf_token }}">
 {% endblock %}
 
-{% block title %}
-    My posts
-{% endblock %}
+{% block title %}Post{% endblock title %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'static/css/posts.css'}">
+{% endblock links %}
 
 {% block content %}
-    {% include "post_app/particles/post_popup.html" %}
-{% endblock content %} 
+    <h5>{{ user.email }}</h5>
+    {% include 'post_app/particles/content_post.html'%}
+    {% include 'post_app/particles/post_popup.html' %}
+{% endblock content %}
+
+{% block scripts %}
+    <script type="module" src="{% static 'js/createPost.js' %} "></script>
+    <script type="module" src="{% static 'js/postList.js' %} "></script>
+    <script type="module" src="{% static 'js/post_popup.js' %} "></script>
+{% endblock scripts %}

@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from django.urls import reverse
 
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.views.generic.base import TemplateView
 from django.views import View
 from django.http import JsonResponse, HttpRequest
@@ -55,10 +55,11 @@ class LoginView(View):
         if form.is_valid():
             user = form.get_user()
             login(request= request, user= user)
-            return redirect('chat')
+            return redirect('my_posts')
         # 
+        print("form is not valid", form.errors.get_json_data())
         return JsonResponse({
-            "success": True,
+            "success": False,
             'errors': form.errors.get_json_data()
         })
 
@@ -72,13 +73,9 @@ class ActivateAccountView(View):
                 'errors': form.errors.get_json_data()
             })
 
-        code_obj = get_object_or_404(ConfirmationCode, id=int(form.cleaned_data.get('code_id')))
+        code = request.session.get('confirmation_code', None)
 
-        if code_obj.code == str(form.get_full_code()):
-            code_obj.target_user.is_active = True
-            code_obj.expired = True
-            code_obj.delete()
-
+        if code == str(form.get_full_code()):
             print('ok')
             return JsonResponse({
                 'success': True,
@@ -91,3 +88,7 @@ class ActivateAccountView(View):
                 'errors': 'Invalid code entered!'
             })
 
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('auth')

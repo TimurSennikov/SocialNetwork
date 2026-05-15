@@ -58,8 +58,9 @@ class PostForm(forms.ModelForm):
         queryset= Tag.objects.all(),
         widget = forms.CheckboxSelectMultiple,
     )
+
     links = forms.ModelMultipleChoiceField(
-        label='',
+        label='Посилання',
         required = False,
         widget = forms.CheckboxSelectMultiple,
         queryset = PostLink.objects.all()
@@ -116,13 +117,15 @@ class PostForm(forms.ModelForm):
         
         url_field =  forms.URLField()
         image_field = forms.ImageField()
-        
+
+        print(self.links_list, "links list")
         for link in self.links_list:
             try:
                 url_field.clean(link)
             except forms.ValidationError:
+                print(f"Некоректне посилання: {link}")
                 self.add_error('links', f"Некоректне посилання: {link}")
-        
+
         for image in self.images_list:
             try:
                 image_field.clean(image)
@@ -134,14 +137,17 @@ class PostForm(forms.ModelForm):
     def save(self, author, commit= True):
         post: Post = super().save(commit= False)
         post.author = author
-        
+
+        print("saving post", post.title, post.topic, post.content, author)
+
         if commit:
             post.save()
             
             post.tags.set(self.cleaned_data['tags'])
             
             for url in self.links_list:
-                PostLinks.objects.create(post= post, url= url)
+                print(url, "creating link")
+                PostLink.objects.create(post= post, url= url)
             for image in self.images_list:
                 PostImage.objects.create(
                     post= post,
@@ -185,6 +191,3 @@ class PostForm(forms.ModelForm):
         compressed_name = f'compressed_{image.name.rsplit('.', 1)[0]}.jpg'
         
         return ContentFile(buffer.getvalue(), name= compressed_name)
-        
-                
-                

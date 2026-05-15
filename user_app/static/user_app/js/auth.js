@@ -1,10 +1,10 @@
 // 
-export function getCSRFToken(){
+function getCSRFToken(){
     return document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 }
 
 // 
-export function showRegisterForm(){
+function showRegisterForm(){
     document.querySelector(".section-register").style.display = 'flex'
     document.querySelector(".section-login").style.display = 'none'
     document.querySelector(".section-confirm").style.display = 'none'
@@ -16,7 +16,7 @@ function showConfirmForm() {
     document.querySelector(".section-login").style.display = 'none'
 }
 
-export function showLoginForm(){
+function showLoginForm(){
     document.querySelector(".section-register").style.display = 'none'
     document.querySelector(".section-login").style.display = 'flex'
     document.querySelector('.section-login nav').lastElementChild.style.cssText = 'border-bottom: 2px solid #543C52'
@@ -88,15 +88,3 @@ document.getElementById('confirm_form').addEventListener('submit', (e) => {
         alert(e);
     });
 });
-
-export function renderErrors(containerId, errors){
-    let conteinerErrors = document.getElementById(containerId)
-    conteinerErrors.innerHTML = ''
-    for (let fieldName in errors){
-        errors[fieldName].forEach(errorObj => {
-            let p = document.createElement('p')
-            p.textContent = errorObj.message
-            conteinerErrors.appendChild(p)
-        })
-    }
-}

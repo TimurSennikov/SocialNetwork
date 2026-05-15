@@ -1,6 +1,6 @@
 import {getCSRFToken, showLoginForm, renderErrors} from './auth.js'
 
-document.getElementById('register-form').addEventListener(
+document.getElementById('register_form').addEventListener(
     'submit',
     function(event){
         event.preventDefault()

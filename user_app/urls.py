@@ -15,11 +15,12 @@ from django.conf import settings
 # ]
 
 from django.urls import path, include
-from .views import AuthTemplateView, RegisterView, LoginView, ActivateAccountView
+from .views import AuthTemplateView, RegisterView, LoginView, ActivateAccountView, LogoutView
 
 urlpatterns = [
     path(route= '', view= AuthTemplateView.as_view(), name= 'auth'),
     path(route= 'register/', view= RegisterView.as_view(), name= 'register'),
     path(route= 'login/', view= LoginView.as_view(), name= 'login'),
+    path(route='logout/', view= LogoutView.as_view(), name='logout'),
     path(route= 'confirm/', view= ActivateAccountView.as_view(), name='activate')
 ]
