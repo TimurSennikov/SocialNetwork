@@ -35,12 +35,12 @@ class PostListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
 
         context['post_creation_form'] = PostForm()
-        context['posts'] = Post.objects.filter(author_id = self.request.user.id)[:self.paginate_by]
+        context['posts'] = Post.objects.filter(author_id = self.request.user.id).order_by('-created_at')[:self.paginate_by]
 
         return context
     
     def get_queryset(self):
-        return Post.objects.filter(author_id = self.request.user.id)
+        return Post.objects.filter(author_id = self.request.user.id).order_by('-created_at')
     
     def get(self, request, *args, **kwargs):
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -63,7 +63,7 @@ class PostListView(LoginRequiredMixin, ListView):
 
 class PostCreateView(LoginRequiredMixin, FormView):
     form_class = PostForm
-    success_url = reverse_lazy('post')
+    success_url = reverse_lazy('my_posts')
     login_url = reverse_lazy('auth')
 
     def get_form_kwargs(self):

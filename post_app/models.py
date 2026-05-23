@@ -37,7 +37,7 @@ class PostImage(models.Model):
     
     """
     original_image = models.ImageField()
-    compresed_image = models.ImageField()
+    compressed_image = models.ImageField()
 
 
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

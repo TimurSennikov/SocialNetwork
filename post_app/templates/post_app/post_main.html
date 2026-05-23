@@ -8,13 +8,16 @@
 {% block title %}Post{% endblock title %}
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'static/css/posts.css'}">
+    <link rel="stylesheet" href="{% static 'css/posts.css' %}">
 {% endblock links %}
+
+{% block doc_body %}
+    {% include 'post_app/particles/post_popup.html' %}
+{% endblock doc_body %}
 
 {% block content %}
     <h5>{{ user.email }}</h5>
     {% include 'post_app/particles/content_post.html'%}
-    {% include 'post_app/particles/post_popup.html' %}
 {% endblock content %}
 
 {% block scripts %}

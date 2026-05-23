@@ -1,6 +1,9 @@
 <div class="modal-create-post">
     <div class="modal-inner">
-        <span class="close-modal">x</span>
+        <div class="modal-close-button">
+            <span class="close-modal">x</span>
+        </div>
+
         <div id="create-errors"></div>
         <form method="post" action="{% url 'post_create' %}" id="post-create-form" method="post" enctype="multipart/form-data">
             {{ post_creation_form.as_p }}
@@ -9,8 +12,13 @@
                 <input type="url" name="links" placeholder="https://www.instagram.com/world.it.academy">
                 <span id="add-link">+</span>
             </div>
+
+            <div class="images" id="image_list"></div>
+
             <p>
-                <button type="submit">Публікація</button>
+                <div class="buttons">
+                    <button type="submit">Публікація</button>
+                </div>
             </p>
         </form>
     </div>

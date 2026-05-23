@@ -1,11 +1,60 @@
 import { getCSRFToken } from "../../../static/js/getCSRFToken.js"
 
+function removeFileFromList(element, list, name) {
+    let dt = new DataTransfer();
+
+    let a = Array.from(list).filter((file) => {return file.name !== name});
+
+    if(a.length > 0) {
+        a.forEach((file) => dt.items.add(file));
+    }
+
+    element.files = dt.files;
+}
+
 document.getElementById('show-modal-create').addEventListener(
     'click',
     function (){
-        document.querySelector(".modal-create-post").style.display = 'flex'
+        document.querySelector(".modal-create-post").style.display = 'flex';
+        document.getElementById('id_content').value = document.getElementById('post-content').value;
     }
 )
+
+document.getElementById('id_images').addEventListener('change', (e) => {
+    let files = e.target.files
+
+    let imageList = document.getElementById('image_list')
+
+    while (imageList.firstChild) {
+        imageList.removeChild(imageList.firstChild)
+    }
+
+    Array.from(files).forEach(file => {
+        let url = URL.createObjectURL(file)
+
+        let imgCont = document.createElement('div')
+        imgCont.classList.add('image-item')
+
+        let removeBtn = document.createElement('img')
+        removeBtn.src = '/static/icons/exit.svg'
+        removeBtn.alt = 'Remove'
+        removeBtn.classList.add('remove-image')
+
+        removeBtn.addEventListener('click', () => {
+            removeFileFromList(e.target, files, file.name)
+            imgCont.remove()
+        });
+
+        let img = document.createElement("img")
+        img.src = url
+
+        imgCont.appendChild(img)
+        imgCont.appendChild(removeBtn)
+        imageList.appendChild(imgCont)
+    });
+});
+
+
 document.querySelector('.close-modal').addEventListener(
     'click',
     function (){
@@ -53,16 +102,6 @@ document.getElementById('post-create-form').addEventListener(
             if (data.redirect_url){
                 window.location.href = data.redirect_url
             }
-        })
-        .catch(data => {
-            alert(JSON.stringify(data.errors));
-        })
+        });
     }
 )
-/*
-        .catch(data => {
-            if(data.errors){
-                renderErrors("create-errors", data.errors)
-            }
-        })
-*/

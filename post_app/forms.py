@@ -56,15 +56,15 @@ class PostForm(forms.ModelForm):
         label='',
         required = False,
         queryset= Tag.objects.all(),
-        widget = forms.CheckboxSelectMultiple,
+        widget=forms.MultipleHiddenInput(),
     )
 
-    links = forms.ModelMultipleChoiceField(
+    links = forms.Field(
         label='Посилання',
-        required = False,
-        widget = forms.CheckboxSelectMultiple,
-        queryset = PostLink.objects.all()
+        required=False,
+        widget=forms.MultipleHiddenInput
     )
+
     # 
     images = MultipleFileField(
         required = False,
