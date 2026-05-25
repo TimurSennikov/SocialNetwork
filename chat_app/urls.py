@@ -2,5 +2,5 @@ from django.urls import path
 from .views import ChatView
 
 urlpatterns = [
-    path(route= '', view= ChatView.as_view(), name= 'chat'),
+    path(route= '', view= ChatView.as_view(), name= 'chats'),
 ]

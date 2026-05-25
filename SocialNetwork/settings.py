@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,6 +77,23 @@ TEMPLATES = [
         },
     },
 ]
+
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("127.0.0.1", 8000)],  # Укажите порт вашего Redis (обычно 6379)
+#         },
+#     },
+# }
+
+CHANNEL_LAYERS = {
+    # основний канал, що використовується за замовчуванням
+    'default': {
+        # вказує, що канал працює в пам'яті, зберігається в оперативній пам'яті пк
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 WSGI_APPLICATION = 'SocialNetwork.wsgi.application'
 

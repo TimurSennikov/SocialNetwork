@@ -3,6 +3,7 @@
 #     Цей файл є аналогом views.py і працює в асинхронному режимі обробки подій.
 # """
 from channels.generic.websocket import AsyncWebsocketConsumer
+
 from .forms import MessageForm
 import json
 
@@ -60,5 +61,3 @@ class ChatConsumer(AsyncWebsocketConsumer):
             ))
         else:
             print('Error')
-        
-        

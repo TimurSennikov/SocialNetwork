@@ -21,6 +21,22 @@ function showLoginForm(){
     document.querySelector(".section-login").style.display = 'flex'
     document.querySelector('.section-login nav').lastElementChild.style.cssText = 'border-bottom: 2px solid #543C52'
 }
+
+function focusNext(currentInput, nextIndex) {
+    const nodes = document.querySelectorAll(`.digits input`);
+
+    if (currentInput.value.length === 1) {
+        if (nextIndex < nodes.length) {
+            nodes[nextIndex].focus();
+        }
+    }
+    else if (currentInput.value.length === 0) {
+        if(nextIndex > 1) {
+            nodes[nextIndex - 2].focus();
+        }
+    }
+}
+
 // 
 document.getElementById('register').addEventListener(
     'click',
@@ -62,6 +78,32 @@ document.getElementById('register_form').addEventListener('submit', (e) => {
     });
 });
 
+document.getElementById('login_form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let sForm = e.target;
+    let sFormData = new FormData(sForm);
+
+    fetch(sForm.action, {method: "POST", headers: {
+        'X-CSRFToken': getCSRFToken()
+        },
+        body: sFormData
+    }).then(
+        (r) => {
+            r.json().then((res) => {
+                if(res.success) {
+                    window.location.href = res.next;
+                }
+                else {
+                    alert(res);
+                }
+            });
+        }
+    ).catch((e) => {
+        alert("Невозможно войти. Проверьте правильность введенных данных.");
+    });
+});
+
 document.getElementById('confirm_form').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -86,5 +128,20 @@ document.getElementById('confirm_form').addEventListener('submit', (e) => {
         }
     ).catch((e) => {
         alert(e);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    let inputs = Array.from(document.querySelectorAll(`.digits input`));
+
+    inputs.forEach((input) => {
+        input.addEventListener('input', (e) => {
+            if(e.target.value.length > 1) {
+                e.target.value = e.target.value.slice(0, 1);
+            }
+
+            const currentIndex = inputs.indexOf(input);
+            focusNext(input, currentIndex + 1);
+        });
     });
 });

@@ -13,6 +13,8 @@ from django.core.mail import send_mail
 
 from django.conf import settings
 
+from user_app.models import User
+
 from .forms import EmailUserCreationForm, EmailAuthenticatedForm, EmailVerificationForm
 
 class AuthTemplateView(TemplateView):
@@ -34,6 +36,7 @@ class RegisterView(View):
             user.save()
 
             request.session['confirmation_code'] = ''.join([random.choice(string.digits) for i in range(6)])
+            request.session['unconfirmed_user_id'] = user.id
 
             send_mail('Регистрация на сайте', f'Подтвердите регистрацию на сайте\n Дорогой пользователь! На вашу почту регистрируют аккаунт на сайте!!! Вот ваш код: {request.session['confirmation_code']}.\nЕсли вы не знаете что это, игнорируйте это сообщение.', from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[user.email], fail_silently=False)
 
@@ -55,7 +58,10 @@ class LoginView(View):
         if form.is_valid():
             user = form.get_user()
             login(request= request, user= user)
-            return redirect('my_posts')
+            return JsonResponse({
+                "success": True,
+                'next': reverse('my_posts')
+            })
         # 
         print("form is not valid", form.errors.get_json_data())
         return JsonResponse({
@@ -76,7 +82,11 @@ class ActivateAccountView(View):
         code = request.session.get('confirmation_code', None)
 
         if code == str(form.get_full_code()):
-            print('ok')
+            user_id = request.session.get('unconfirmed_user_id', None)
+            user = get_object_or_404(User, id= user_id)
+            user.is_active = True
+            user.save()
+
             return JsonResponse({
                 'success': True,
                 'next': reverse('auth')

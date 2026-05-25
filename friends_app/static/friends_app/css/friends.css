@@ -1,0 +1,146 @@
+#friends-home {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1vh;
+
+    overflow-y: auto;
+}
+
+#friends-home section {
+    display: flex;
+    flex-direction: column;
+
+    width: 64vw;
+    height: 34.3vh;
+
+    border: 1px solid;
+    border-radius: 10px;
+
+    border-color: #CDCED2;
+
+    background-color: #FFFFFF;
+}
+
+#friends-home .friends-grid {
+    display: flex;
+    flex-direction: row;
+}
+
+#friends-home section div h2 {
+    padding: 0.3vw;
+    font-weight: 500;
+
+    font-size: 1.66vh;
+}
+
+.friends-nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2vh;
+}
+
+.friends-nav button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.friends-section-header {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.friends-section-header * {
+    margin: 0.5vw;
+}
+
+.friends-section-header button {
+    padding: 0;
+    border: none;
+    background: none;
+
+    cursor: pointer;
+}
+
+.friends-section-container {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 1vh;
+}
+
+.friends-section-container article {
+    background-color: #FFFFFF;
+}
+
+.friend-card {
+    display: flex;
+    flex-direction: column;
+
+    width: 20.09vw;
+    height: 27.3vh;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 1vh;
+
+    border: 1px solid;
+    border-radius: 10px;
+
+    border-color: #CDCED2;
+
+    margin: 1vh 0.3vw 1vh 0.3vw;
+}
+
+.friend-card .actions {
+    display: flex;
+
+    flex-direction: row;
+
+    gap: 0.5vw;
+}
+
+.friend-card .filled {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 8.5vw;
+    height: 4.375vh;
+
+    border: 1px solid;
+    border-radius: 1234px;
+
+    background-color: #543C52;
+
+    color: #FFFFFF;
+}
+
+.friend-card .outlined {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 8.5vw;
+    height: 4.375vh;
+
+    border: 1px solid;
+    border-radius: 1234px;
+
+    background-color: #FFFFFF;
+}

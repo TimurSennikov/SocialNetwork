@@ -1,0 +1,24 @@
+<!-- Контейнер головного стану з трьома блоками. -->
+<main id="friends-home">
+    <!-- Проходимо по блоках: запити, рекомендації, друзі. -->
+    {% for key, section in sections.items %}
+        <!-- Обводка навколо кожного блоку. -->
+        <section class="friends-home-section">
+            <!-- Flex для заголовка і кнопки перегляду всіх. -->
+            <div class="friends-section-header">
+                <!-- Виводимо назву поточного блоку. -->
+                <h2>{{ section.title }}</h2>
+                <!-- Відкриваємо повний список цього блоку. -->
+                <button type="button" data-section-link="{{ key }}">Дивитись всі</button>
+            </div>
+            <!-- Flex-сітка карток по 3 у ряд. -->
+            <!-- Позначаємо сітку назвою блоку, щоб JS міг знайти "Всі друзі". -->
+            <div class="friends-grid" data-home-section="{{ key }}">
+                <!-- Підключаємо картки людей для блоку. -->
+                {% include "friends_app/particles/friend_cards.html" with users=section.users section=key %}
+            </div>
+        </section>
+    <!-- Завершуємо перебір трьох блоків. -->
+    {% endfor %}
+</main>
+

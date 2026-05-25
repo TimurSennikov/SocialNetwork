@@ -12,6 +12,14 @@
     color: #070A1C;
 }
 
+body {
+    height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
 header {
     display: flex;
     flex-direction: row;
@@ -19,7 +27,7 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    width: 100vw;
+    width: 100vw;   
     height: 9.17vh;
 
     padding: 2.5vh 5.5vw 2.5vh 5.5vw;
@@ -70,14 +78,6 @@ header nav div{
     height: 100%;
 }
 
-main{
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    background-color: #FAF8FF;
-    padding: 2.2vh 5.5vw 2.2vh 5.5vw;
-
-}
 .info-profile{
     display: flex;
     flex-direction: column;
@@ -85,11 +85,32 @@ main{
     align-items: center;
     
     width: 24.4vw;
-    /* height: 100vh; */
 
     gap: 0.83vh;
 }
-.content{
+
+.info-profile:empty {
+    display: none;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    background-color: #FAF8FF;
+    padding: 2.2vh 5.5vw 2.2vh 5.5vw;
+
+    flex: 1;
+    overflow: hidden;
+}
+
+.content {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -99,6 +120,6 @@ main{
 
     padding: 1.66vh 1.11vw 1.66vh 1.11vw;
 
+    flex: 1;
     width: 64.09vw;
-    /* height: 100vh; */
 }

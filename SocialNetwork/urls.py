@@ -23,9 +23,10 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('user/', include('user_app.urls'), name= 'user_views'),
+    path('user/', include('user_app.urls'), name= 'user_views'),
     path('friends/', include('friends_app.urls'), name= 'friends_views'),
     path('post/', include('post_app.urls'), name= 'post_views'),
+    path("chat/", include("chat_app.urls"), name= "chat_views"),
     path(route= '', view= include('home_app.urls')),
     path(route= 'auth/', view= include('user_app.urls')),
 ]

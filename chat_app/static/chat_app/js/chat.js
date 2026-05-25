@@ -1,4 +1,4 @@
-const url = `ws://${window.location.host}/chat/`
+const url = `ws://${window.location.host}/chatwebsocket/`
 const chatSocket = new WebSocket(url)
 
 chatSocket.onmessage = function(event){

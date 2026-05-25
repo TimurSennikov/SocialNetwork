@@ -25,6 +25,10 @@
 }
 
 .selection {
+    flex-direction: column;
+
+    justify-content: center;
+
     width: 30vw;
     height: 65vh;
 
@@ -109,6 +113,19 @@
     line-height: 100%;
 }
 
+.section-confirm nav {
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.section-confirm nav p {
+    height: auto;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    text-align: center;
+}
+
 .selection .misc {
     display: flex;
 
@@ -123,4 +140,33 @@
     font-weight: 500;
 
     height: 2.63vh;
+}
+
+#confirm_form {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+}
+
+.digits {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+.digits input {
+    max-width: 3.5vw;
+    max-height: 4.6875vh;
+}
+
+
+.digits input::-webkit-outer-spin-button,
+.digits input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.digits input {
+    -moz-appearance:textfield;
 }

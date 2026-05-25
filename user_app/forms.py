@@ -60,37 +60,37 @@ class EmailUserCreationForm(forms.ModelForm):
         return user
 
 class EmailVerificationForm(forms.Form):
-    digit_1 = forms.CharField(max_length=1, widget=forms.NumberInput(attrs={
+    digit_1 = forms.CharField(label='', max_length=1, widget=forms.NumberInput(attrs={
         'class': 'code-input',
         'min': '0',
         'max': '9',
         'required': True,
     }))
-    digit_2 = forms.CharField(max_length=1, widget=forms.NumberInput(attrs={
+    digit_2 = forms.CharField(label='', max_length=1, widget=forms.NumberInput(attrs={
         'class': 'code-input',
         'min': '0',
         'max': '9',
         'required': True,
     }))
-    digit_3 = forms.CharField(max_length=1, widget=forms.NumberInput(attrs={
+    digit_3 = forms.CharField(label='', max_length=1, widget=forms.NumberInput(attrs={
         'class': 'code-input',
         'min': '0',
         'max': '9',
         'required': True,
     }))
-    digit_4 = forms.CharField(max_length=1, widget=forms.NumberInput(attrs={
+    digit_4 = forms.CharField(label='', max_length=1, widget=forms.NumberInput(attrs={
         'class': 'code-input',
         'min': '0',
         'max': '9',
         'required': True,
     }))
-    digit_5 = forms.CharField(max_length=1, widget=forms.NumberInput(attrs={
+    digit_5 = forms.CharField(label='', max_length=1, widget=forms.NumberInput(attrs={
         'class': 'code-input',
         'min': '0',
         'max': '9',
         'required': True,
     }))
-    digit_6 = forms.CharField(max_length=1, widget=forms.NumberInput(attrs={
+    digit_6 = forms.CharField(label='', max_length=1, widget=forms.NumberInput(attrs={
         'class': 'code-input',
         'min': '0',
         'max': '9',

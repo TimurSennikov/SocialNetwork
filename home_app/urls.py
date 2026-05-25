@@ -1,11 +1,8 @@
-from django.contrib import admin
 from django.urls import path
-from django.conf.urls.static import static
+from .views import ShowAllPost
 
-from django.conf import settings
-
-from home_app.views import HomeView
+from post_app.views import PostCreateView
 
 urlpatterns = [
-    path("", HomeView.as_view(), name= "home_view")
+    path(route= '', view= ShowAllPost.as_view(), name= 'home_view')
 ]

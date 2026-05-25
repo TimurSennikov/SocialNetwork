@@ -1,0 +1,10 @@
+<div class="remove-friend-modal">
+    <div class="modal-inner">
+        <h1>Видалити з друзів?</h1>
+        <p>Ви впевнені, що хочете видалити користувачазі своїх друзів? Цю дію не можна буде скасувати.</p>
+        <form id="remove_friend_form" action="{% url 'remove_friend' user_to_remove.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Так, видалити</button>
+            <button type="button" id="cancel_remove">Ні, залишити</button>
+        </form>
+    </div>

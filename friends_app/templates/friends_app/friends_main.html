@@ -1,11 +1,41 @@
-{% extends "base.html" %} 
+{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}friends{% endblock title %} 
+<!-- Відкриваємо блок службових meta-даних. -->
+{% block meta %}
+    <!-- Передаємо CSRF-токен для fetch POST-запитів. -->
+    <meta name="csrf-token" content="{{ csrf_token }}">
+<!-- Закриваємо блок meta. -->
+{% endblock %}
 
-{% block links %}{% endblock links %} 
+{% block links %}
+    <link rel="stylesheet" href="{% static 'friends_app/css/friends.css' %}">
+{% endblock %}
 
+<!-- Назва сторінки у вкладці браузера. -->
+{% block title %}Друзі{% endblock %}
+
+{% block info-profile %}
+    <div class="friends-nav">
+        <!-- Підключаємо перемикачі вкладок друзів. -->
+        {% include "friends_app/particles/friends_nav.html" %}
+    </div>
+{% endblock %}
+
+<!-- Відкриваємо основний вміст сторінки. -->
 {% block content %}
-    <h1>друзья</h1>
-{% endblock content %} 
+    <!-- Підключаємо головну вкладку з трьома блоками. -->
+    {% include "friends_app/particles/friends_home.html" %}
+    <!-- Підключаємо контейнер повної вкладки. -->
+    {% include "friends_app/particles/friends_section.html" %}
+<!-- Закриваємо основний вміст. -->
+{% endblock %}
 
-<!-- {% block scripts %} {% endblock scripts %} -->
+<!-- Відкриваємо блок скриптів. -->
+{% block scripts %}
+    <!-- Підключаємо логіку переходу між секціями. -->
+    <script type="module" src="{% static 'friends_app/js/friends_sections.js' %}"></script>
+    <!-- Підключаємо логіку дій з картками. -->
+    <script type="module" src="{% static 'friends_app/js/friend_actions.js' %}"></script>
+<!-- Закриваємо блок скриптів. -->
+{% endblock %}

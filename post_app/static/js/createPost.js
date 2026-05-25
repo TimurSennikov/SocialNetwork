@@ -65,13 +65,25 @@ document.querySelector('.close-modal').addEventListener(
 document.getElementById('add-link').addEventListener(
     'click',
     function (){
-        const input =  document.createElement('input')
+        let linkDiv = document.createElement('div');
+        linkDiv.classList.add('link-item');
+
+        let input =  document.createElement('input')
         input.type = 'url'
         input.name = 'links'
         input.placeholder = 'https://www.instagram.com/world.it.academy'
 
-        document.getElementById('links-list').appendChild(document.createElement('br'))
-        document.getElementById('links-list').appendChild(input)
+        let remove_input = document.createElement('h3');
+        remove_input.textContent = '×';
+        remove_input.classList.add('remove-link');
+        remove_input.addEventListener('click', () => {
+            input.remove();
+            remove_input.remove();
+        });
+
+        document.getElementById('links-list').insertBefore(linkDiv, document.getElementById('links-list').firstChild);
+        linkDiv.appendChild(input)
+        linkDiv.appendChild(remove_input)   
     }
 )
 

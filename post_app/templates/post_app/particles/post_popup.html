@@ -1,25 +1,50 @@
+{% load static %}
+
 <div class="modal-create-post">
     <div class="modal-inner">
+        <h1>Створення публікації</h1>
+
         <div class="modal-close-button">
             <span class="close-modal">x</span>
         </div>
 
         <div id="create-errors"></div>
-        <form method="post" action="{% url 'post_create' %}" id="post-create-form" method="post" enctype="multipart/form-data">
-            {{ post_creation_form.as_p }}
-            <p>Посилання</p>
-            <div id="links-list">
-                <input type="url" name="links" placeholder="https://www.instagram.com/world.it.academy">
-                <span id="add-link">+</span>
+        <form method="post" action="{% url 'post_create' %}" id="post-create-form" enctype="multipart/form-data">
+            <p>
+                <label for="{{ post_creation_form.title.id_for_label }}">{{ post_creation_form.title.label }}</label>
+                {{ post_creation_form.title }}
+            </p>
+
+            <p>
+                <label for="{{ post_creation_form.topic.id_for_label }}">{{ post_creation_form.topic.label }}</label>
+                {{ post_creation_form.topic }}
+            </p>
+
+            <p>
+                <label for="{{ post_creation_form.content.id_for_label }}">{{ post_creation_form.content.label }}</label>
+                {{ post_creation_form.content }}
+            </p>
+
+            <div class="form-group">
+                <label for="{{ post_creation_form.links.id_for_label }}">{{ post_creation_form.links.label }}</label>
+                <div id="links-list">
+                    <input type="url" name="links" placeholder="https://www.instagram.com/world.it.academy">
+                    <span id="add-link">+</span>
+                </div>
             </div>
 
             <div class="images" id="image_list"></div>
 
-            <p>
-                <div class="buttons">
-                    <button type="submit">Публікація</button>
+            <div class="buttons">
+                <div class="image-upload-label">
+                    <label for="{{ post_creation_form.images.id_for_label }}">
+                        <img src="{% static 'icons/image.svg' %}" alt="Обрати зображення">
+                    </label>
                 </div>
-            </p>
+
+                {{ post_creation_form.images }}
+                <button type="submit">Публікація</button>
+            </div>
         </form>
     </div>
 </div>
