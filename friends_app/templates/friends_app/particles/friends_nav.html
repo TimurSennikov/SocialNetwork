@@ -1,9 +1,9 @@
 <!-- Єдиний flex для перемикання вкладок зліва зверху. -->
 <nav class="friends-nav">
     <!-- Кнопка відкриває всі запити без перезавантаження. -->
-    <button type="button" data-section-link="requests">Запити</button>
+    <button type="button" data-section-link="requests" {% if request.path == '/requests/' %}class="active"{% endif %}>Запити</button>
     <!-- Кнопка відкриває всі рекомендації без перезавантаження. -->
-    <button type="button" data-section-link="recommendations">Рекомендації</button>
+    <button type="button" data-section-link="recommendations" {% if request.path == '/recommendations/' %}class="active"{% endif %}>Рекомендації</button>
     <!-- Кнопка відкриває всіх друзів без перезавантаження. -->
-    <button type="button" data-section-link="friends">Всі друзі</button>
+    <button type="button" data-section-link="friends" {% if request.path == '/friends/' %}class="active"{% endif %}>Всі друзі</button>
 </nav>

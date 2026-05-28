@@ -7,30 +7,22 @@
 {% endblock %}
 
 {% block links %}
-    {% load static %}
     <link rel="stylesheet" href="{% static 'chat_app/css/chat.css' %}">
 {% endblock links %}
 
 {% block info-profile %}
-    <button id="create-group-chat"> + Створити груповий чат</button>
-
-    <div class="recommendations">
-        {% include 'chat_app/particles/contacts_search.html' %}
-
-        <div class="contacts">
-            {% include 'chat_app/particles/contacts_list.html' %}
-        </div>
-    </div>
+    {% include "chat_app/particles/chat_contacts.html" %}
 {% endblock %}
 
 {% block content %}
-    <h1>Мої чати</h1>
-    <form method="post">
-        {{ form.as_p }}
-        <button type="submit">Надіслати</button>
-    </form>
-    <hr>
-    <h2>Повідомлення:</h2>
+    <div class="chat-page">
+        <!-- Підключаємо лівий блок контактів. -->
+        <!-- Підключаємо центральний блок активного чату. -->
+        {% include "chat_app/particles/chat_main.html" %}
+        <!-- Підключаємо праву колонку з повідомленнями та груповими чатами. -->
+        {% include "chat_app/particles/chat_sidebar.html" %}
+    </div>
+
 {% endblock content %}
 
 {% block scripts %}

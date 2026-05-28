@@ -7,6 +7,43 @@
     overflow-y: auto;
 }
 
+
+#friends-home .filled {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 8.5vw;
+    height: 4.375vh;
+
+    border: 1px solid;
+    border-radius: 1234px;
+
+    background-color: #543C52;
+
+    color: #FFFFFF;
+}
+
+#friends-home .outlined {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 8.5vw;
+    height: 4.375vh;
+
+    border: 1px solid;
+    border-radius: 1234px;
+
+    background-color: #FFFFFF;
+}
+
 #friends-home section {
     display: flex;
     flex-direction: column;
@@ -36,6 +73,9 @@
 
 .friends-nav {
     display: flex;
+
+    width: 24vw;
+    align-items: flex-start;
 
     flex-direction: column;
 
@@ -81,6 +121,10 @@
     background-color: #FFFFFF;
 }
 
+.friends-home-section {
+    padding: 0 1vw 0 1vw;
+}
+
 .friend-card {
     display: flex;
     flex-direction: column;
@@ -107,40 +151,4 @@
     flex-direction: row;
 
     gap: 0.5vw;
-}
-
-.friend-card .filled {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 8.5vw;
-    height: 4.375vh;
-
-    border: 1px solid;
-    border-radius: 1234px;
-
-    background-color: #543C52;
-
-    color: #FFFFFF;
-}
-
-.friend-card .outlined {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 8.5vw;
-    height: 4.375vh;
-
-    border: 1px solid;
-    border-radius: 1234px;
-
-    background-color: #FFFFFF;
 }

@@ -1,9 +1,0 @@
-{% for user in contacts %}
-    <div class="contact">
-        {% if user.username %}
-            <p>{{ user.username }}</p>
-        {% else %}
-            <p>{{ user.email }}</p>
-        {% endif %}
-    </div>
-{% endfor %}

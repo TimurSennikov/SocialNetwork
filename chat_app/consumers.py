@@ -3,12 +3,13 @@
 #     Цей файл є аналогом views.py і працює в асинхронному режимі обробки подій.
 # """
 from channels.generic.websocket import AsyncWebsocketConsumer
-
 from .forms import MessageForm
 import json
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+        
+        
         # 
         self.room_group_name = 'test_group'
         await self.channel_layer.group_add(
@@ -48,6 +49,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             метод, що містить логіку відправки повідомлення
         '''
         text_data_dict = json.loads(event['message'])
+        print(text_data_dict)
         form = MessageForm(text_data_dict)
         
         if form.is_valid():
@@ -61,3 +63,5 @@ class ChatConsumer(AsyncWebsocketConsumer):
             ))
         else:
             print('Error')
+        
+        
