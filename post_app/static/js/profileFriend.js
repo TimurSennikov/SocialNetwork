@@ -13,10 +13,7 @@ async function handlerFriendAction(actionButton) {
     })
     const data = await response.json()
 
-    alert(data.friend_html)
-
     if (data.friend_html){
-        // addFriendToHome(data.friend_html) 
         window.location.href = data.friend_html
     }
 
@@ -24,25 +21,14 @@ async function handlerFriendAction(actionButton) {
         actionButton.textContent = data.label
     }
     if (data.remove){
-        actionButton.closest('article').remove()
+        window.location.href = '/';
     }
 
   
 }
-// 
-function addFriendToHome(friendHtml){
-    const friendsCount = homeFriendsList.querySelectorAll('article').length
-    if (friendsCount >= 6){
-        return
-    }
-    homeFriendsList.querySelector('p')?.remove()
-    homeFriendsList.insertAdjacentHTML('beforeend', friendHtml)
-    // 
-    connectFriendActionButtons(homeFriendsList)
-}
-// підключаємо прослуховування подій до кнопок
+
 function connectFriendActionButtons(parent = document){
-    const actionButtons = parent.querySelectorAll('[data-friend-action]')
+    const actionButtons = parent.querySelectorAll('[data-friend-profile-action]')
     actionButtons.forEach((actionButton) => {
         if (actionButton.dataset.actionButton){
             return

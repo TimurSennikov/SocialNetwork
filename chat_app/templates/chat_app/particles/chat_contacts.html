@@ -8,7 +8,11 @@
     <section class="chat-block">
         <!-- Показуємо заголовок блоку контактів. -->
         <form class="search-contacts-form">
-            <h2>Контакти</h2>
+            <div class="contacts-header">
+                <img src="{% static 'icons/friend.svg' %}" class="contacts-icon">
+                <h2>Контакти</h2>
+            </div>
+
             <input type="text" name="search" placeholder="Пошук">
         </form>
 

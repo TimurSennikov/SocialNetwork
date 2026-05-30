@@ -348,3 +348,46 @@
     border: 0px solid;
     border-radius: 16px;
 }
+
+.friend-actions {
+    display: flex;
+    flex-direction: row;
+
+    gap: 1.1vw;
+}
+
+.friend-actions .filled {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 7.7vw;
+    height: 4.1vh;
+
+    border: 1px solid;
+    border-radius: 1234px;
+
+    background-color: #543C52;
+
+    color: #FFFFFF;
+}
+
+.friend-actions .outlined {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 7.7vw;
+    height: 4.1vh;
+
+    border: 1px solid;
+    border-radius: 1234px;
+
+    background-color: #FFFFFF;
+}

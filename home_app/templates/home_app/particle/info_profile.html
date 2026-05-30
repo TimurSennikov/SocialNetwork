@@ -4,8 +4,8 @@
         <img src="{% static 'media/avatar_example.png' %}" alt="">
     </a>
 
-    <p class="bolder">{{ user.email }}</p>
-    <p class="bold">{% if user.username %} {{ user.username }}{% endif %}</p>
+    <p class="bolder">{% if profile_user %}{{ profile_user.email }}{% else %}{{ user.email }}{% endif %}</p>
+    <p class="bold">{% if profile_user %}{{ profile_user.username }}{% else %}{{ user.username }}{% endif %}</p>
 
     <div class="statistics">
         <div>
@@ -21,4 +21,20 @@
             <p>Друзі</p>
         </div>
     </div>
+
+    {% if profile_user %}
+        <div class="friend-actions">
+            {% if friendship.status == 'accepted' %}
+                <button type="button" class="filled">Повідомлення</button>
+                <button type="button" data-friend-profile-action data-url="{% url 'friend_action' profile_user.id 'delete' %}" class="outlined">Видалити з друзів</button>
+            {% elif friendship.status == 'pending' and not friendship.from_user == user %}
+                <button type="button" data-friend-profile-action data-url="{% url 'friend_action' profile_user.id 'accept' %}" class="filled">Підтвердити</button>
+                <button type="button" data-friend-profile-action data-url="{% url 'friend_action' profile_user.id 'delete' %}" class="outlined">Відхилити</button>
+            {% elif friendship.status == 'pending' and friendship.from_user == user %}
+                <button type="button" data-friend-profile-action data-url="{% url 'friend_action' profile_user.id 'delete' %}" class="filled">Очікування</button>
+            {% else %}
+                <button type="button" data-friend-profile-action data-url="{% url 'friend_action' profile_user.id 'add' %}" class="filled">Додати до друзів</button>
+            {% endif %}
+        </div>
+    {% endif %}
 </div>

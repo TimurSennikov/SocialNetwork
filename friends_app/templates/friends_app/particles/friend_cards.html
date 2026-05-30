@@ -1,7 +1,9 @@
+{% load static %}
 <!-- Перебираємо людей, яких передав backend. -->
 {% for person in users %}
     <!-- Картка людини з обводкою і шириною для 3 карток у ряд. -->
     <article class="friend-card" data-person-id="{{ person.id }}">
+        <img src="{% static 'media/avatar_example.png' %}" class="avatar">
         <!-- Показуємо username, а якщо його немає - email. -->
         <h3>{% firstof person.username person.email %}</h3>
         <!-- Показуємо email як простий підпис без аватарки. -->
@@ -17,7 +19,7 @@
             <!-- Для рекомендацій показуємо додавання і видалення з рекомендацій. -->
             {% elif section == "recommendations" %}
                 <!-- Надсилаємо запит у друзі. -->
-                <button type="button" data-friend-action data-url="{% url 'friend_action' person.id 'add' %}" class="filled">Додати</button>
+                <button type="button" data-friend-action data-url="{% url 'friend_action' person.id 'add_redirect' %}" class="filled">Додати</button>
                 <!-- Прибираємо картку зі списку рекомендацій. -->
                 <button type="button" data-friend-action data-url="{% url 'friend_action' person.id 'dismiss' %}" class="outlined">Приховати</button>
             <!-- Для друзів показуємо повідомлення і видалення. -->
@@ -28,7 +30,7 @@
                 <button type="button" data-friend-action data-url="{% url 'friend_action' person.id 'delete' %}" class="outlined">Видалити</button>
             <!-- Закриваємо умови кнопок для типу списку. -->
             {% endif %}
-        </div>  
+        </div>
     </article>
 <!-- Якщо список порожній. -->
 {% empty %}

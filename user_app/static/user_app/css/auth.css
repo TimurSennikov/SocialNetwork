@@ -1,3 +1,8 @@
+.registration {
+    height: 83vh;
+    overflow-y: hidden;
+}
+
 .section-register, .section-login {
     flex-direction: column;
     justify-content: start;
@@ -47,7 +52,7 @@
     flex-direction: column;
 
     width: 47.15vw;
-    height: 54.8vh;
+    height: 54.7h;
 }
 
 .registration .imgcont img {
